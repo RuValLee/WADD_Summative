@@ -1,3 +1,8 @@
 function setup() {
-    createCanvas(600, 400);
+    const canvas = createCanvas(640, 640);
+    canvas.id("gameCanvas");
+}
+
+function draw() {
+
 }
