@@ -3,14 +3,21 @@
     --button-color: #B8DEFF;
     --button-hover: #DFE7F1;
     --text-color: #474240;
+    --title-font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    --body-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
     background-color: var(--background-color);
 }
 
-h1 {
+#title-page {
+    display: grid;
+}
+
+#title-page h1 {
     color: var(--text-color);
+    display: flex;
 }
 
 #title-page li {
