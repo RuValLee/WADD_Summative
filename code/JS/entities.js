@@ -1,24 +1,40 @@
-class Characters {
+class GameObjects {
     constructor(x, y, w, h, frameDelay) {
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
-        this.frameDelay = frameDelay;
-        this.index = 0;
     }
 
-    display(spritePng, frameX, frameY, frameW, frameH) {
-        let img = spritePng.get(frameX, frameY, frameW, frameH);
-        image(img, this.x, this.y, this.w, this.h);
+    display() {
+        fill(100, 0);
+        rect(this.x, this.y, this.w, this.h);
     }
 }
 
-class Player extends Characters {
-    constructor(x, y, w, h, frameDelay, movementSpeed, animationArray) {
+class NPC extends GameObjects {
+    constructor(x, y, w, h, frameDelay) {
+        super(x, y, w, h);
+        this.frameDelay = 60;
+    }
+
+    display(spritePng, frameX, frameY, frameW, frameH) {
+        let idleMotion = sin(frameCount * 0.1) * 0.5;
+        let img = spritePng.get(frameX, frameY, frameW, frameH);
+
+        imageMode(CENTER);
+        image(img, this.x, this.y + idleMotion, this.w, this.h);
+        imageMode(CORNER);       
+    }
+}
+
+class Player extends NPC {
+    constructor(x, y, w, h, frameDelay, movementSpeed, animationArray, obstacleArray) {
         super(x, y, w, h, frameDelay);
         this.movementSpeed = movementSpeed;
         this.animationArray = animationArray;
+        this.obstacleArray = obstacleArray;
+        this.index = 0;
         this.prevX = this.x;
         this.prevY = this.y;
         this.isMoving;
@@ -34,7 +50,7 @@ class Player extends Characters {
     imageMode(CORNER);
     }
 
-    update(currentObstacles) {
+    update() {
         // Variables for player locations after movement.
         let nextX = this.x;
         let nextY = this.y;
@@ -84,7 +100,7 @@ class Player extends Characters {
         let nextY = this.y;
 
         this.isMoving = false;
-        
+
         if (keyIsDown(87) || keyIsDown(38)) {   // w
             nextY -= this.movementSpeed;
             this.isMoving = true;
