@@ -1,10 +1,10 @@
 class Characters {
-    constructor(x, y, w, h, animationSpeed) {
+    constructor(x, y, w, h, frameDelay) {
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
-        this.animationSpeed = animationSpeed;
+        this.frameDelay = frameDelay;
         this.index = 0;
     }
 
@@ -15,22 +15,22 @@ class Characters {
 }
 
 class Player extends Characters {
-    constructor(x, y, animationSpeed, size, movementSpeed) {
-        super(x, y, animationSpeed);
-        super.index;
-        this.size = size;
+    constructor(x, y, w, h, frameDelay, movementSpeed, animationArray) {
+        super(x, y, w, h, frameDelay);
         this.movementSpeed = movementSpeed;
+        this.animationArray = animationArray;
         this.prevX = this.x;
         this.prevY = this.y;
+        this.isMoving;
     }
 
-    display(animationArray) {
-    if(frameCount % animationSpeed === 0) {
-        index = (index + 1) % animationArray.length;
+    display() {
+    if(this.isMoving && frameCount % this.frameDelay === 0) {
+        this.index = (this.index + 1) % this.animationArray.length;
     }
 
     imageMode(CENTER);
-    image(animationArray[index], this.x, this.y, this.w, this.h);
+    image(this.animationArray[this.index], this.x, this.y, this.w, this.h);
     imageMode(CORNER);
     }
 
@@ -43,20 +43,21 @@ class Player extends Characters {
         if(!dialogueBoxVisible) {
             if (keyIsDown(87) || keyIsDown(38)) {   // w
                 nextY -= this.speed;
+                this.animationArray = [];
             }
             if (keyIsDown(65) || keyIsDown(37)) {   // a
                 nextX -= this.speed;
-                animationArray = [];
-                getPlayerSprite(characterSprite, walkAnimation, 8, spritePixelSize);
+                this.animationArray = [];
+                getPlayerSprite(characterSprite, this.animationArray, 8, spritePixelSize);
             }
             if (keyIsDown(83) || keyIsDown(40)) {   // s
                 nextY += this.speed;
-                animationArray = [];
+                this.animationArray = [];
             }
             if (keyIsDown(68) || keyIsDown(39)) {   // d
                 nextX += this.speed;
-                animationArray = [];
-                getPlayerSprite(characterSprite, walkAnimation, 8, 0);
+                this.animationArray = [];
+                getPlayerSprite(characterSprite, this.animationArray, 8, 0);
             }
         }
         
@@ -75,5 +76,37 @@ class Player extends Characters {
             this.x = nextX;
             this.y = nextY;
         }
+    }
+
+    updateTemp() {
+        // Variables for player locations after movement.
+        let nextX = this.x;
+        let nextY = this.y;
+
+        this.isMoving = false;
+        
+        if (keyIsDown(87) || keyIsDown(38)) {   // w
+            nextY -= this.movementSpeed;
+            this.isMoving = true;
+        }
+        if (keyIsDown(65) || keyIsDown(37)) {   // a
+            nextX -= this.movementSpeed;
+            this.animationArray = [];
+            getPlayerSprite(characterSprite, this.animationArray, 8, spritePixelSize);
+            this.isMoving = true;
+        }
+        if (keyIsDown(83) || keyIsDown(40)) {   // s
+            nextY += this.movementSpeed;
+            this.isMoving = true;
+        }
+        if (keyIsDown(68) || keyIsDown(39)) {   // d
+            nextX += this.movementSpeed;
+            this.animationArray = [];
+            getPlayerSprite(characterSprite, this.animationArray, 8, 0);
+            this.isMoving = true;
+        }
+
+        this.x = nextX;
+        this.y = nextY;
     }
 }
