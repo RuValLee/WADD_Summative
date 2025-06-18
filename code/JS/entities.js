@@ -13,9 +13,8 @@ class GameObjects {
 }
 
 class NPC extends GameObjects {
-    constructor(x, y, w, h, frameDelay) {
+    constructor(x, y, w, h) {
         super(x, y, w, h);
-        this.frameDelay = 60;
     }
 
     display(spritePng, frameX, frameY, frameW, frameH) {
@@ -30,7 +29,8 @@ class NPC extends GameObjects {
 
 class Player extends NPC {
     constructor(x, y, w, h, frameDelay, movementSpeed, animationArray, obstacleArray) {
-        super(x, y, w, h, frameDelay);
+        super(x, y, w, h);
+        this.frameDelay = frameDelay;
         this.movementSpeed = movementSpeed;
         this.animationArray = animationArray;
         this.obstacleArray = obstacleArray;
