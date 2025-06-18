@@ -17,7 +17,7 @@ class GameObjects {
     }
 
     /**
-     * A method for displaying the obstacle boxes, not shown in the actual game.
+     * A method for displaying the game objects, not shown in the actual game.
      */
     display() {
         fill(100, 0);
