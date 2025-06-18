@@ -58,8 +58,8 @@ class Player extends GameObjects {
      * @param {number} y The y-coordinate of the player character.
      * @param {number} w The width of the player character.
      * @param {number} h The height of the player character.
-     * @param {number} frameDelay The number of frames to delay before displaying the next sprite image.
      * @param {number} movementSpeed The number of pixels the player character moves per frame.
+     * @param {number} frameDelay The number of frames to delay before displaying the next sprite image.
      * @param {p5.Image[]} animationArray An array holding the sprite images for the movement animation.
      */
     constructor(x, y, w, h, movementSpeed, frameDelay, animationArray) {
