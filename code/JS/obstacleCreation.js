@@ -99,6 +99,16 @@ function decorationCollision() {
     allObstacles.push(new GameObject(gridSize * 32, gridSize * 16, gridSize * 7, gridSize * 0.1));    // Top row tree trunks
     allObstacles.push(new GameObject(gridSize * 33, gridSize * 18.1, gridSize * 7, gridSize * 0.1));    // Middle row tree trunks
     allObstacles.push(new GameObject(gridSize * 32, gridSize * 20.2, gridSize * 7, gridSize * 0.1));    // Bottom row tree trunks
+
+    // Bushes
+    allObstacles.push(new GameObject(gridSize * 38.5, gridSize * 24.5, gridSize, gridSize * 0.1));    // Farm bush
+    allObstacles.push(new GameObject(gridSize * 23.5, gridSize * 19.5, gridSize, gridSize * 0.1));    // Statue bush
+    allObstacles.push(new GameObject(gridSize * 38.5, gridSize * 13.5, gridSize, gridSize * 0.1));    // Tree trunk bush
+    allObstacles.push(new GameObject(gridSize * 25.5, gridSize * 9.5, gridSize, gridSize * 0.1));    // Forest bush
+    allObstacles.push(new GameObject(gridSize * 19.5, gridSize * 0.5, gridSize, gridSize * 0.1));    // Short purple house bush
+    allObstacles.push(new GameObject(gridSize * 0.5, gridSize * 0.5, gridSize, gridSize * 0.1));    // Tall purple house bush
+    allObstacles.push(new GameObject(gridSize * 15.5, gridSize * 13.5, gridSize, gridSize * 0.1));    // Builder bush
+    allObstacles.push(new GameObject(gridSize * 0.5, gridSize * 24.5, gridSize, gridSize * 0.1));    // Blue building bush
 }
 
-// Working note: Continue with decoration collision! (bushes, seeds, mushrooms, rocks, statue)
+// Working note: Continue with decoration collision! (seeds, mushrooms, rocks, statue)
