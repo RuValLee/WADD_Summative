@@ -83,4 +83,4 @@ function decorationCollision() {
     allObstacles.push(new GameObject(gridSize * 37., gridSize * 26.25, gridSize * 3, gridSize * 0.1));    // Top fence, right part
 }
 
-// Working note: Continue with building, forest and decoration collision!
+// Working note: Continue with building, forest and decoration collision! Also consider adjusting NPC collision boxes for more natural interaction distance!
