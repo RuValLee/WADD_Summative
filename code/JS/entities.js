@@ -1,7 +1,7 @@
 /**
  * A class for all entities/objects in the game.
  */
-class GameObjects {
+class GameObject {
     /**
      * Parameters that specify the location and size of an game object.
      * @param {number} x The x-coordinate of the game object.
@@ -26,9 +26,9 @@ class GameObjects {
 }
 
 /**
- * A class for NPCs, extended from the GameObjects class with all parameters the same in the parent constructor.
+ * A class for NPCs, extended from the GameObject class with all parameters the same in the parent constructor.
  */
-class NPC extends GameObjects {
+class NPC extends GameObject {
     /**
      * A method for drawing the NPC sprites on the game canvas.
      * @param {p5.Image} spritePng The character sprite sheet image.
@@ -49,9 +49,9 @@ class NPC extends GameObjects {
 }
 
 /**
- * A class for the player character, extended from the GameObjects class.
+ * A class for the player character, extended from the GameObject class.
  */
-class Player extends GameObjects {
+class Player extends GameObject {
     /**
      * Parameters for the player character's location, size and animations.
      * @param {number} x The x-coordinate of the player character.
@@ -93,13 +93,15 @@ class Player extends GameObjects {
      * @param {Obstacle[]} obstacleArray An array holding the obstacle objects' collision boxes.
      */
     update(obstacleArray) {
-        // Variables for the player character's location after movement and boolean for the player character's state of movement.
+        // Variables for the player character's location after movement.
         let nextX = this.x;
         let nextY = this.y;
+
+        // Boolean for the player character's state of movement.
         this.isMoving = false;
 
         // Allows player movement with animations by WASD / direction keys and stops the player from moving while inside a dialogue.
-        if(!dialogueBoxVisible) {
+        // if(!dialogueBoxVisible) {
             if (keyIsDown(87) || keyIsDown(38)) {   // w, up arrow
                 nextY -= this.movementSpeed;
                 this.isMoving = true;
@@ -120,13 +122,14 @@ class Player extends GameObjects {
                 getPlayerSprite(characterSprite, this.animationArray, 8, 0);
                 this.isMoving = true;
             }
-        }
+        // }
         
         // Checks if the player character's location after movement collides with any obstacles.
+        // Divide the width and height by 4 for more accurate character size for collision detection.
         let collision = false;
         for (let obstacle of obstacleArray) {
-            if (nextX + this.size / 2 >= obstacle.x && nextX - this.size / 2 <= obstacle.x + obstacle.w &&
-                nextY + this.size / 2 >= obstacle.y && nextY - this.size / 2 <= obstacle.y + obstacle.h) {
+            if (nextX + this.w / 4 >= obstacle.x && nextX - this.w / 4 <= obstacle.x + obstacle.w &&
+                nextY + this.h / 4 >= obstacle.y && nextY - this.h / 4 - 5 <= obstacle.y + obstacle.h) {
                 collision = true;
             break;
             }
@@ -137,38 +140,5 @@ class Player extends GameObjects {
             this.x = nextX;
             this.y = nextY;
         }
-    }
-
-    // Not commented because the previous update method should be the actual one, not this one.
-    updateTemp() {
-        // Variables for player locations after movement.
-        let nextX = this.x;
-        let nextY = this.y;
-
-        this.isMoving = false;
-
-        if (keyIsDown(87) || keyIsDown(38)) {   // w, up arrow
-            nextY -= this.movementSpeed;
-            this.isMoving = true;
-        }
-        if (keyIsDown(65) || keyIsDown(37)) {   // a, left arrow
-            nextX -= this.movementSpeed;
-            this.animationArray = [];
-            getPlayerSprite(characterSprite, this.animationArray, 8, spritePixelSize);
-            this.isMoving = true;
-        }
-        if (keyIsDown(83) || keyIsDown(40)) {   // s, down arrow
-            nextY += this.movementSpeed;
-            this.isMoving = true;
-        }
-        if (keyIsDown(68) || keyIsDown(39)) {   // d, right arrow
-            nextX += this.movementSpeed;
-            this.animationArray = [];
-            getPlayerSprite(characterSprite, this.animationArray, 8, 0);
-            this.isMoving = true;
-        }
-
-        this.x = nextX;
-        this.y = nextY;
     }
 }

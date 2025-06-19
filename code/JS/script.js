@@ -1,5 +1,6 @@
 let backgroundMap;
 let characterSprite;
+const gridSize = 16;
 const spritePixelSize = 32;
 let walkAnimation = [];
 let player, woodcutter, farmer, fisher, builder;
@@ -21,6 +22,9 @@ function setup() {
     builder = new NPC(230, 320, 75, 50);
     farmer = new NPC(585, 440, 50, 50);
     woodcutter = new NPC(600, 140, 50, 50);
+
+    // Creates the collision boxes for collision detection.
+    obstacleCreate();
 }
 
 function draw() {
@@ -33,5 +37,8 @@ function draw() {
     farmer.display(characterSprite, 0, spritePixelSize * 4.5, spritePixelSize, spritePixelSize);
     woodcutter.display(characterSprite, 0, spritePixelSize * 5.5, spritePixelSize, spritePixelSize);
     player.display();
-    player.updateTemp();
+    player.update(allObstacles);
+
+    // For checking collision box locations, delete after done.
+    obstacleCreate();
 }
