@@ -7,6 +7,8 @@ let player, woodcutter, farmer, fisher, builder;
 let allInteractionAreas = [];
 let woodcutterInteraction, farmerInteraction, fisherInteraction, builderInteraction;
 let allObstacles = [];
+let interactIndicatorOn = false;
+let dialogueBoxVisible = false;
 
 function preload() {
     backgroundMap = loadImage("../assets/backgroundMap.png");
@@ -33,7 +35,8 @@ function setup() {
 function draw() {
     // Draws the background image of the village on the game canvas.
     image(backgroundMap, 0, 0, 640, 640);
-    
+    console.log(interactIndicatorOn);
+    console.log(dialogueBoxVisible);
     // Draws NPCs and player character on the game canvas.
     fisher.display(characterSprite, 0, spritePixelSize * 2, spritePixelSize * 2, spritePixelSize * 1.5);
     builder.display(characterSprite, 0, spritePixelSize * 3.5, spritePixelSize * 1.5, spritePixelSize);
@@ -42,10 +45,17 @@ function draw() {
     player.display();
     player.update(allObstacles);
 
-    for(let interactionArea of allInteractionAreas) {
-        interactionTrigger(interactionArea);    
-    }
+    interactionDetection(allInteractionAreas);
+    showDialogue();
+}
 
+function keyPressed() {
+    if((key === "f" || key === "F")) {
+        if(interactIndicatorOn) {
+            interactIndicatorOn = false;
+            dialogueBoxVisible = true;            
+        }
+    }
 }
 
 function interactionAreaCreate() {
@@ -64,13 +74,34 @@ function interactionAreaCreate() {
     }
 }
 
-function interactionTrigger(object) {
-    if(player.collides(object)) {
-        textAlign(CENTER, CENTER);
+function interactionDetection(objects) {
+    interactIndicatorOn = false;
+
+    for(let object of objects) {
+        if(player.collides(object) && !dialogueBoxVisible) {
+            interactIndicatorOn = true;
+
+            // Draws the interact button when the player gets close to an NPC.
+            textAlign(CENTER, CENTER);
+            fill(255, 200);
+            rect(width / 5 * 4, height / 2, 180, 50);
+            fill(0);
+            textSize(24);
+            text("F - Interact", width / 5 * 4, height / 2, 160, height - 30);
+
+            break;
+        }
+    }
+}
+
+function showDialogue() {
+    if(dialogueBoxVisible) {
+        textAlign(LEFT, TOP);
         fill(255, 200);
-        rect(width / 5 * 4, height / 2, 180, 50);
+        rectMode(CORNER);
+        rect(20, 510, 600, 110);
         fill(0);
-        textSize(24);
-        text("F - Interact", width / 5 * 4, height / 2, 160, height - 30);
+        textSize(23);
+        text("Dialogue", 35, height - 115, width - 80, height - 30);
     }
 }

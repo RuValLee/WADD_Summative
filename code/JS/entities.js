@@ -68,8 +68,6 @@ class Player extends GameObject {
         this.frameDelay = frameDelay;
         this.animationArray = animationArray;
         this.index = 0;
-        this.prevX = this.x;
-        this.prevY = this.y;
         this.isMoving;
     }
 
@@ -101,7 +99,7 @@ class Player extends GameObject {
         this.isMoving = false;
 
         // Allows player movement with animations by WASD / direction keys and stops the player from moving while inside a dialogue.
-        // if(!dialogueBoxVisible) {
+        if(!dialogueBoxVisible) {
             if (keyIsDown(87) || keyIsDown(38)) {   // w, up arrow
                 nextY -= this.movementSpeed;
                 this.isMoving = true;
@@ -122,7 +120,7 @@ class Player extends GameObject {
                 getPlayerSprite(characterSprite, this.animationArray, 8, 0);
                 this.isMoving = true;
             }
-        // }
+        }
         
         // Checks if the player character's location after movement collides with any obstacles.
         // Divide the width and height by 4 for more accurate character size for collision detection.
