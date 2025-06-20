@@ -141,4 +141,14 @@ class Player extends GameObject {
             this.y = nextY;
         }
     }
+
+    /**
+     * Checking collision by calculating the centre points of player and interactable areas.
+     * @param {Object} other The other object to check for collision.
+     * @returns {boolean} True if the player collides with other objects, false otherwise.
+     */
+    collides(other) {
+        let d = dist(this.x, this.y, other.x, other.y);
+        return d < this.w / 2 + other.w / 2;
+    }
 }

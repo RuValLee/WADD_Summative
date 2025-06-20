@@ -4,6 +4,8 @@ const gridSize = 16;
 const spritePixelSize = 32;
 let walkAnimation = [];
 let player, woodcutter, farmer, fisher, builder;
+let allInteractionAreas = [];
+let woodcutterInteraction, farmerInteraction, fisherInteraction, builderInteraction;
 let allObstacles = [];
 
 function preload() {
@@ -23,14 +25,15 @@ function setup() {
     farmer = new NPC(585, 440, 50, 50);
     woodcutter = new NPC(600, 140, 50, 50);
 
-    // Creates the collision boxes for collision detection.
+    // Creates the obstacles and interaction areas.
     obstacleCreate();
+    interactionAreaCreate();
 }
 
 function draw() {
     // Draws the background image of the village on the game canvas.
     image(backgroundMap, 0, 0, 640, 640);
-
+    
     // Draws NPCs and player character on the game canvas.
     fisher.display(characterSprite, 0, spritePixelSize * 2, spritePixelSize * 2, spritePixelSize * 1.5);
     builder.display(characterSprite, 0, spritePixelSize * 3.5, spritePixelSize * 1.5, spritePixelSize);
@@ -39,6 +42,35 @@ function draw() {
     player.display();
     player.update(allObstacles);
 
-    // For checking collision box locations, delete after done.
-    obstacleCreate();
+    for(let interactionArea of allInteractionAreas) {
+        interactionTrigger(interactionArea);    
+    }
+
+}
+
+function interactionAreaCreate() {
+    // Creates game objects for the NPC interaction areas.
+    rectMode(CENTER);
+    fisherInteraction = new GameObject(150, 485, 40, 40);
+    builderInteraction = new GameObject(230, 315, 40, 40);
+    farmerInteraction = new GameObject(600, 140, 40, 40);
+    woodcutterInteraction = new GameObject(580, 430, 40, 40);
+
+    allInteractionAreas.push(fisherInteraction, builderInteraction, farmerInteraction, woodcutterInteraction);
+    
+    // For testing and checking interaction areas while coding, not displayed in the actual game.
+    for(let interactionArea of allInteractionAreas) {
+        interactionArea.display();
+    }
+}
+
+function interactionTrigger(object) {
+    if(player.collides(object)) {
+        textAlign(CENTER, CENTER);
+        fill(255, 200);
+        rect(width / 5 * 4, height / 2, 180, 50);
+        fill(0);
+        textSize(24);
+        text("F - Interact", width / 5 * 4, height / 2, 160, height - 30);
+    }
 }
