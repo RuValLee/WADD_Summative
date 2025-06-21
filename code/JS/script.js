@@ -35,8 +35,7 @@ function setup() {
 function draw() {
     // Draws the background image of the village on the game canvas.
     image(backgroundMap, 0, 0, 640, 640);
-    console.log(interactIndicatorOn);
-    console.log(dialogueBoxVisible);
+
     // Draws NPCs and player character on the game canvas.
     fisher.display(characterSprite, 0, spritePixelSize * 2, spritePixelSize * 2, spritePixelSize * 1.5);
     builder.display(characterSprite, 0, spritePixelSize * 3.5, spritePixelSize * 1.5, spritePixelSize);
