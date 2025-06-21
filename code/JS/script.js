@@ -1,15 +1,3 @@
-let backgroundMap;
-let characterSprite;
-const gridSize = 16;
-const spritePixelSize = 32;
-let walkAnimation = [];
-let player, woodcutter, farmer, fisher, builder;
-let allInteractionAreas = [];
-let woodcutterInteraction, farmerInteraction, fisherInteraction, builderInteraction;
-let allObstacles = [];
-let interactIndicatorOn = false;
-let dialogueBoxVisible = false;
-
 function preload() {
     backgroundMap = loadImage("../assets/backgroundMap.png");
     characterSprite = loadImage("../assets/Characters.png");
