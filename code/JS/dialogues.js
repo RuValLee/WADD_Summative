@@ -1,3 +1,6 @@
+/**
+ * An object literal holding all dialogues and choices.
+ */
 dialogues = {
     day1: {
         fisher: {
@@ -21,7 +24,7 @@ dialogues = {
                     "Fisher: Already leaving? See you another day then!",
                     "(You decided not to intervene at all.)"
                 ]
-            }            
+            }       
         },
 
         builder: {
@@ -45,7 +48,7 @@ dialogues = {
                     "Builder: Wish you a wonderful day.",
                     "(You decided not to intervene at all.)"
                 ]
-            }
+            }   
         },
 
         farmer: {
@@ -69,7 +72,7 @@ dialogues = {
                     "Farmer: It was great to talk to you!",
                     "(You decided not to intervene at all.)"
                 ]
-            }
+            }    
         },
 
         woodcutter: {
@@ -93,7 +96,7 @@ dialogues = {
                     "Woodcutter: See you.",
                     "(You decided not to intervene at all.)"
                 ]
-            }            
+            }                
         }
     },
 

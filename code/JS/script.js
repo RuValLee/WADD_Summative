@@ -33,32 +33,63 @@ function draw() {
     player.update(allObstacles);
 
     interactionDetection(allInteractionAreas);
-    showDialogue();
+    showDialogueBox();
+    dialogueProgress();
+
+    console.log(dialogueIndex);
 }
 
 function keyPressed() {
     if((key === "f" || key === "F")) {
         if(interactIndicatorOn) {
             interactIndicatorOn = false;
-            dialogueBoxVisible = true;            
+            dialogueBoxVisible = true;
+            dialogueStarted = true;
+        }
+    }
+
+    if(key === " ") {
+        if(dialogueBoxVisible) {
+            if(dialogueIndex < currentDialogueGroup.length - 1) {
+                dialogueIndex++;
+            }
+        }
+    }
+
+    if(dialogueBoxVisible && playerChoice === null) {
+        if(key === "1") {
+            selectChoices("help");
+            currentDialogueType = "help";
+        }
+        else if(key === "2") {
+            selectChoices("sabotage");
+            currentDialogueType = "sabotage";
+        }
+        else if(key === "3") {
+            selectChoices("leave");
+            currentDialogueType = "leave";
         }
     }
 }
 
 function interactionAreaCreate() {
-    // Creates game objects for the NPC interaction areas.
+    // Creates game objects for the NPC interaction areas. Names for interaction tracking.
     rectMode(CENTER);
     fisherInteraction = new GameObject(150, 485, 40, 40);
+    fisherInteraction.name = "fisher";
     builderInteraction = new GameObject(230, 315, 40, 40);
+    builderInteraction.name = "builder";
     farmerInteraction = new GameObject(600, 140, 40, 40);
+    farmerInteraction.name = "farmer";
     woodcutterInteraction = new GameObject(580, 430, 40, 40);
+    woodcutterInteraction.name = "woodcutter";
 
     allInteractionAreas.push(fisherInteraction, builderInteraction, farmerInteraction, woodcutterInteraction);
     
     // For testing and checking interaction areas while coding, not displayed in the actual game.
-    for(let interactionArea of allInteractionAreas) {
-        interactionArea.display();
-    }
+    // for(let interactionArea of allInteractionAreas) {
+    //     interactionArea.display();
+    // }
 }
 
 function interactionDetection(objects) {
@@ -69,26 +100,61 @@ function interactionDetection(objects) {
             interactIndicatorOn = true;
 
             // Draws the interact button when the player gets close to an NPC.
-            textAlign(CENTER, CENTER);
-            fill(255, 200);
-            rect(width / 5 * 4, height / 2, 180, 50);
-            fill(0);
-            textSize(24);
-            text("F - Interact", width / 5 * 4, height / 2, 160, height - 30);
+            buttonCreate(width / 5 * 4, height / 2, 180, 50, "F - Interact");
 
+            break;
+        }
+    }
+
+    for(let object of objects) {
+        if(player.collides(object) && playerChoice === null && !dialogueStarted) {
+            dialogueToShow(object, dialogues[`day${currentDay}`][object.name]);
             break;
         }
     }
 }
 
-function showDialogue() {
+function showDialogueBox() {
     if(dialogueBoxVisible) {
         textAlign(LEFT, TOP);
         fill(255, 200);
         rectMode(CORNER);
         rect(20, 510, 600, 110);
         fill(0);
-        textSize(23);
-        text("Dialogue", 35, height - 115, width - 80, height - 30);
+        textSize(24);
+        text(currentDialogueGroup[dialogueIndex], 35, height - 115, width - 80, height - 30);
+    }
+}
+
+function dialogueToShow(npcInteraction, dialogueGroup) {
+    currentNPC = npcInteraction.name;
+    currentDialogueGroup = dialogueGroup.intro;
+    dialogueIndex = 0;
+}
+
+function showOptions() {
+    buttonCreate(470, height / 2 + 30, 300, 50, "1 - Help");    // Help option
+    buttonCreate(470, height / 2 + 90, 300, 50, "2 - Persuade to skip work");    // Sabotage option
+    buttonCreate(470, height / 2 + 150, 300, 50, "3 - Leave");    // Leave option
+}
+
+function selectChoices(optionChosen) {
+    playerChoice = optionChosen;
+    currentDialogueGroup = dialogues[`day${currentDay}`][currentNPC].options[optionChosen];
+    dialogueIndex = 0;
+}
+
+function dialogueProgress() {
+    if(dialogueBoxVisible) {
+        if(currentDialogueGroup === dialogues[`day${currentDay}`][currentNPC].intro && dialogueIndex === currentDialogueGroup.length - 1) {
+            showOptions();
+        }
+
+        if(currentDialogueGroup === dialogues[`day${currentDay}`][currentNPC].options[currentDialogueType]
+            && dialogueIndex === currentDialogueGroup.length - 1) {
+            interactIndicatorOn = true;
+            dialogueBoxVisible = false;
+            dialogueIndex = 0;
+        }
     }
 }

@@ -11,10 +11,18 @@ let allObstacles = [];
 let characterSprite;
 let walkAnimation = [];
 let player, woodcutter, farmer, fisher, builder;
-let woodcutterInteraction, farmerInteraction, fisherInteraction, builderInteraction;
 
 // Variables for interactions and dialogues.
+let woodcutterInteraction, farmerInteraction, fisherInteraction, builderInteraction;
 let interactIndicatorOn = false;
 let dialogueBoxVisible = false;
-let dialogueIndex = 0;
 let dialogues;
+let dialogueIndex = 0;
+let dialogueStarted = false;
+let playerChoice = null;
+
+// Variables for tracking current states/objects.
+let currentDay = 1;
+let currentNPC;
+let currentDialogueGroup;
+let currentDialogueType;

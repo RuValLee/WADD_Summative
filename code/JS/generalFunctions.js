@@ -14,3 +14,13 @@ function getPlayerSprite(spritePng, animationArray, numberOfSprites, frameHeight
     }
     return animationArray;
 }
+
+function buttonCreate(x, y, w, h, message) {
+    rectMode(CENTER);
+    textAlign(CENTER, CENTER);
+    fill(255, 200);
+    rect(x, y, w, h);
+    fill(0);
+    textSize(24);
+    text(message, x, y, w - 20, h - 20);
+}
