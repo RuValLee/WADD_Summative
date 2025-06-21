@@ -49,7 +49,7 @@ function keyPressed() {
                 dialogueIndex = 0;
 
                 // Removes the interaction area after first interaction.
-                allInteractionAreas = allInteractionAreas.filter(interactionArea => interactionArea !== currentNPC);
+                allInteractionAreas = allInteractionAreas.filter(interactionArea => interactionArea.name !== currentNPC);
             }
         }
     }
