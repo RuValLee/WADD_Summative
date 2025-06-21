@@ -34,9 +34,9 @@ function draw() {
 
     interactionDetection(allInteractionAreas);
     showDialogueBox();
-    dialogueProgress();
 
     console.log(dialogueIndex);
+    console.log(currentDialogueGroup);
 }
 
 function keyPressed() {
@@ -52,6 +52,15 @@ function keyPressed() {
         if(dialogueBoxVisible) {
             if(dialogueIndex < currentDialogueGroup.length - 1) {
                 dialogueIndex++;
+            }
+            else if(currentDialogueGroup === dialogues[`day${currentDay}`][currentNPC].intro && dialogueIndex === currentDialogueGroup.length - 1) {
+                dialogueIndex += 0;
+            }
+            else if(currentDialogueGroup === dialogues[`day${currentDay}`][currentNPC].options[currentDialogueType]
+                    && dialogueIndex === currentDialogueGroup.length - 1) {
+                interactIndicatorOn = true;
+                dialogueBoxVisible = false;
+                dialogueIndex = 0;
             }
         }
     }
@@ -123,6 +132,10 @@ function showDialogueBox() {
         fill(0);
         textSize(24);
         text(currentDialogueGroup[dialogueIndex], 35, height - 115, width - 80, height - 30);
+
+        if(currentDialogueGroup === dialogues[`day${currentDay}`][currentNPC].intro && dialogueIndex === currentDialogueGroup.length - 1) {
+            showOptions();
+        }
     }
 }
 
@@ -142,19 +155,4 @@ function selectChoices(optionChosen) {
     playerChoice = optionChosen;
     currentDialogueGroup = dialogues[`day${currentDay}`][currentNPC].options[optionChosen];
     dialogueIndex = 0;
-}
-
-function dialogueProgress() {
-    if(dialogueBoxVisible) {
-        if(currentDialogueGroup === dialogues[`day${currentDay}`][currentNPC].intro && dialogueIndex === currentDialogueGroup.length - 1) {
-            showOptions();
-        }
-
-        if(currentDialogueGroup === dialogues[`day${currentDay}`][currentNPC].options[currentDialogueType]
-            && dialogueIndex === currentDialogueGroup.length - 1) {
-            interactIndicatorOn = true;
-            dialogueBoxVisible = false;
-            dialogueIndex = 0;
-        }
-    }
 }
