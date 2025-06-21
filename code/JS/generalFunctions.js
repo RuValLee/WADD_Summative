@@ -15,6 +15,14 @@ function getPlayerSprite(spritePng, animationArray, numberOfSprites, frameHeight
     return animationArray;
 }
 
+/**
+ * Creates UI buttons.
+ * @param {number} x The starting x-coordinate of the button.
+ * @param {number} y The starting y-coordinate of the button.
+ * @param {number} w The width of the button.
+ * @param {number} h The height of the button.
+ * @param {string} message The words to display within the button.
+ */
 function buttonCreate(x, y, w, h, message) {
     rectMode(CENTER);
     textAlign(CENTER, CENTER);

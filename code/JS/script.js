@@ -8,12 +8,7 @@ function setup() {
     canvas.id("gameCanvas");
     getPlayerSprite(characterSprite, walkAnimation, 8, 0);
 
-    // Creates the player character and NPCs.
-    player = new Player(320, 600, 50, 50, 3, 5, walkAnimation);
-    fisher = new NPC(125, 500, 100, 70);
-    builder = new NPC(230, 320, 75, 50);
-    farmer = new NPC(585, 440, 50, 50);
-    woodcutter = new NPC(600, 140, 50, 50);
+    characterCreate();
 
     // Creates the obstacles and interaction areas.
     obstacleCreate();
@@ -24,19 +19,10 @@ function draw() {
     // Draws the background image of the village on the game canvas.
     image(backgroundMap, 0, 0, 640, 640);
 
-    // Draws NPCs and player character on the game canvas.
-    fisher.display(characterSprite, 0, spritePixelSize * 2, spritePixelSize * 2, spritePixelSize * 1.5);
-    builder.display(characterSprite, 0, spritePixelSize * 3.5, spritePixelSize * 1.5, spritePixelSize);
-    farmer.display(characterSprite, 0, spritePixelSize * 4.5, spritePixelSize, spritePixelSize);
-    woodcutter.display(characterSprite, 0, spritePixelSize * 5.5, spritePixelSize, spritePixelSize);
-    player.display();
-    player.update(allObstacles);
+    drawCharacters();
 
     interactionDetection(allInteractionAreas);
     showDialogueBox();
-
-    console.log(dialogueIndex);
-    console.log(currentDialogueGroup);
 }
 
 function keyPressed() {
@@ -81,48 +67,40 @@ function keyPressed() {
     }
 }
 
-function interactionAreaCreate() {
-    // Creates game objects for the NPC interaction areas. Names for interaction tracking.
-    rectMode(CENTER);
-    fisherInteraction = new GameObject(150, 485, 40, 40);
-    fisherInteraction.name = "fisher";
-    builderInteraction = new GameObject(230, 315, 40, 40);
-    builderInteraction.name = "builder";
-    farmerInteraction = new GameObject(600, 140, 40, 40);
-    farmerInteraction.name = "farmer";
-    woodcutterInteraction = new GameObject(580, 430, 40, 40);
-    woodcutterInteraction.name = "woodcutter";
-
-    allInteractionAreas.push(fisherInteraction, builderInteraction, farmerInteraction, woodcutterInteraction);
-    
-    // For testing and checking interaction areas while coding, not displayed in the actual game.
-    // for(let interactionArea of allInteractionAreas) {
-    //     interactionArea.display();
-    // }
-}
-
+/**
+ * A function for detecting if interactions are available, displays the interact button when it is available.
+ * For loop to check which dialogue to show when the player gets close to an NPC.
+ * @param {GameObject[]} objects An array holding all NPC interaction locations.
+ */
 function interactionDetection(objects) {
+    // Hides the interact button when no interaction is available.
     interactIndicatorOn = false;
 
+    // Displays the button when the player is close to any NPCs.
     for(let object of objects) {
         if(player.collides(object) && !dialogueBoxVisible) {
             interactIndicatorOn = true;
 
-            // Draws the interact button when the player gets close to an NPC.
+            // Draws the interact button.
             buttonCreate(width / 5 * 4, height / 2, 180, 50, "F - Interact");
 
             break;
         }
     }
 
+    // Gets the corresponding dialogue group to display when the player approaches an NPC.
     for(let object of objects) {
         if(player.collides(object) && playerChoice === null && !dialogueStarted) {
-            dialogueToShow(object, dialogues[`day${currentDay}`][object.name]);
+            dialogueToShow(object, dialogues[`day${currentDay}`][object.name].intro);
             break;
         }
     }
 }
 
+/**
+ * A function for displaying the dialogue and the dialogue box.
+ * For loop to display the choice buttons during dialogues.
+ */
 function showDialogueBox() {
     if(dialogueBoxVisible) {
         textAlign(LEFT, TOP);
@@ -139,18 +117,21 @@ function showDialogueBox() {
     }
 }
 
+/**
+ * A function for determining which dialogue gropu should be displayed.
+ * @param {GameObject} npcInteraction The interaction game object of the NPC.
+ * @param {string[]} dialogueGroup An array holding the dialogue strings.
+ */
 function dialogueToShow(npcInteraction, dialogueGroup) {
     currentNPC = npcInteraction.name;
-    currentDialogueGroup = dialogueGroup.intro;
+    currentDialogueGroup = dialogueGroup;
     dialogueIndex = 0;
 }
 
-function showOptions() {
-    buttonCreate(470, height / 2 + 30, 300, 50, "1 - Help");    // Help option
-    buttonCreate(470, height / 2 + 90, 300, 50, "2 - Persuade to skip work");    // Sabotage option
-    buttonCreate(470, height / 2 + 150, 300, 50, "3 - Leave");    // Leave option
-}
-
+/**
+ * A function to switch to the dialogue group corresponding to players' choices.
+ * @param {"help" | "sabotage" | "leave"} optionChosen The dialogue chosen by the player.
+ */
 function selectChoices(optionChosen) {
     playerChoice = optionChosen;
     currentDialogueGroup = dialogues[`day${currentDay}`][currentNPC].options[optionChosen];

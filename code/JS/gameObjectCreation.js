@@ -1,4 +1,63 @@
 /**
+ * A function for creating the player character and NPCs.
+ */
+function characterCreate() {
+    player = new Player(320, 600, 50, 50, 3, 5, walkAnimation);
+    fisher = new NPC(125, 500, 100, 70);
+    builder = new NPC(230, 320, 75, 50);
+    farmer = new NPC(585, 440, 50, 50);
+    woodcutter = new NPC(600, 140, 50, 50); 
+}
+
+/**
+ * A function for drawing NPCs and player character on the game canvas.
+ */
+function drawCharacters() {
+    // NPCs
+    fisher.display(characterSprite, 0, spritePixelSize * 2, spritePixelSize * 2, spritePixelSize * 1.5);
+    builder.display(characterSprite, 0, spritePixelSize * 3.5, spritePixelSize * 1.5, spritePixelSize);
+    farmer.display(characterSprite, 0, spritePixelSize * 4.5, spritePixelSize, spritePixelSize);
+    woodcutter.display(characterSprite, 0, spritePixelSize * 5.5, spritePixelSize, spritePixelSize);
+
+    // Player character
+    player.display();
+    player.update(allObstacles);
+}
+
+/**
+ * A function for creating NPCs' interactable location/areas.
+ */
+function interactionAreaCreate() {
+    // Creates game objects for the NPC interaction areas.
+    // Names for interaction tracking.
+    rectMode(CENTER);
+    fisherInteraction = new GameObject(150, 485, 40, 40);
+    fisherInteraction.name = "fisher";
+    builderInteraction = new GameObject(230, 315, 40, 40);
+    builderInteraction.name = "builder";
+    farmerInteraction = new GameObject(600, 140, 40, 40);
+    farmerInteraction.name = "farmer";
+    woodcutterInteraction = new GameObject(580, 430, 40, 40);
+    woodcutterInteraction.name = "woodcutter";
+
+    allInteractionAreas.push(fisherInteraction, builderInteraction, farmerInteraction, woodcutterInteraction);
+    
+    // For testing and checking interaction areas while coding, not displayed in the actual game.
+    // for(let interactionArea of allInteractionAreas) {
+    //     interactionArea.display();
+    // }
+}
+
+/**
+ * A function to show option buttons during the dialogue.
+ */
+function showOptions() {
+    buttonCreate(470, height / 2 + 30, 300, 50, "1 - Help");    // Help option
+    buttonCreate(470, height / 2 + 90, 300, 50, "2 - Persuade to skip work");    // Sabotage option
+    buttonCreate(470, height / 2 + 150, 300, 50, "3 - Leave");    // Leave option
+}
+
+/**
  * Creates collision boxes for borders / obstacles.
  * Bottom of a collision box should ideally be 1-1.5 gridSize smaller for more realistic overlappig effect.
  */
