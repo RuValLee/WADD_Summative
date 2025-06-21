@@ -35,10 +35,10 @@ function interactionAreaCreate() {
     fisherInteraction.name = "fisher";
     builderInteraction = new GameObject(230, 315, 40, 40);
     builderInteraction.name = "builder";
-    farmerInteraction = new GameObject(600, 140, 40, 40);
-    farmerInteraction.name = "farmer";
-    woodcutterInteraction = new GameObject(580, 430, 40, 40);
+    woodcutterInteraction = new GameObject(600, 140, 40, 40);
     woodcutterInteraction.name = "woodcutter";
+    farmerInteraction = new GameObject(580, 430, 40, 40);
+    farmerInteraction.name = "farmer";
 
     allInteractionAreas.push(fisherInteraction, builderInteraction, farmerInteraction, woodcutterInteraction);
     

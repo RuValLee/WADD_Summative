@@ -44,9 +44,11 @@ function keyPressed() {
             }
             else if(currentDialogueGroup === dialogues[`day${currentDay}`][currentNPC].options[currentDialogueType]
                     && dialogueIndex === currentDialogueGroup.length - 1) {
+                // Resetting dialogue and dialogue box states.
                 interactIndicatorOn = true;
                 dialogueBoxVisible = false;
-                dialogueIndex = 0;
+                dialogueStarted = false;
+                playerChoice = null;
 
                 // Removes the interaction area after first interaction.
                 allInteractionAreas = allInteractionAreas.filter(interactionArea => interactionArea.name !== currentNPC);
@@ -54,7 +56,8 @@ function keyPressed() {
         }
     }
 
-    if(dialogueBoxVisible && playerChoice === null) {
+    if(dialogueBoxVisible && playerChoice === null
+        && currentDialogueGroup === dialogues[`day${currentDay}`][currentNPC].intro && dialogueIndex === currentDialogueGroup.length - 1) {
         if(key === "1") {
             selectChoices("help");
             currentDialogueType = "help";
