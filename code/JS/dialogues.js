@@ -48,7 +48,7 @@ dialogues = {
                     "Builder: Wish you a wonderful day.",
                     "(You decided not to intervene at all.)"
                 ]
-            }   
+            },
         },
 
         farmer: {
@@ -97,7 +97,11 @@ dialogues = {
                     "(You decided not to intervene at all.)"
                 ]
             }                
-        }
+        },
+        dayEnd: [
+            "(Doesn't seem like there's more I can do.)",
+            "(Guess that's it for today then.)"
+        ]
     },
 
     day2: {

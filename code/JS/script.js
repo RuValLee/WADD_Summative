@@ -52,6 +52,17 @@ function keyPressed() {
 
                 // Removes the interaction area after first interaction.
                 allInteractionAreas = allInteractionAreas.filter(interactionArea => interactionArea.name !== currentNPC);
+
+                // Automatically starts the dayEnd dialogue if all NPCs are interacted.
+                if(allInteractionAreas.length === 0) {
+                    currentDialogueGroup = dialogues[`day${currentDay}`].dayEnd;
+                    dialogueBoxVisible = true;
+                    dialogueIndex = 0;
+                }
+            }
+            else if(currentDialogueGroup === dialogues[`day${currentDay}`].dayEnd && dialogueIndex === currentDialogueGroup.length - 1) {
+                dialogueBoxVisible = false;
+                startNewDay();
             }
         }
     }
@@ -142,4 +153,19 @@ function selectChoices(optionChosen) {
     playerChoice = optionChosen;
     currentDialogueGroup = dialogues[`day${currentDay}`][currentNPC].options[optionChosen];
     dialogueIndex = 0;
+}
+
+function startNewDay() {
+    // Progresses the number of day.
+    currentDay++;
+    dialogueIndex = 0;
+    playerChoice = null;
+    dialogueStarted = false;
+
+    // Resets player location.
+    player.x = 320;
+    player.y = 600;
+
+    // Resets interactions.
+    interactionAreaCreate();
 }
