@@ -33,6 +33,9 @@ function buttonCreate(x, y, w, h, message) {
     text(message, x, y, w - 20, h - 20);
 }
 
+/**
+ * A function for creating a fade-in/out transition between days.
+ */
 function fadeTransition() {
     // Canvas fades out to black.
     if(isFadingOut) {

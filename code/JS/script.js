@@ -158,9 +158,18 @@ function selectChoices(optionChosen) {
     dialogueIndex = 0;
 }
 
+/**
+ * A function for progressing the game (number of day).
+ */
 function startNewDay() {
     // Progresses the number of day.
-    currentDay++;
+    if(currentDay < 7) {
+        currentDay++;
+    } else {
+        currentDay = 7;
+    }
+
+    // Resets variable states.
     dialogueIndex = 0;
     playerChoice = null;
     dialogueStarted = false;
