@@ -99,8 +99,9 @@ dialogues = {
             }                
         },
         dayEnd: [
-            "(Doesn't seem like there's more I can do.)",
-            "(Guess that's it for today then.)"
+            "(Doesn't seem like there's more to do.)",
+            "(Guess that's it for today then.)",
+            "(Let's go home.)"
         ]
     },
 
