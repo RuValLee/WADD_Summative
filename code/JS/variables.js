@@ -19,10 +19,16 @@ let dialogueBoxVisible = false;
 let dialogues;
 let dialogueIndex = 0;
 let dialogueStarted = false;
-let playerChoice = null;
 
 // Variables for tracking current states/objects.
+let playerChoice = null;
 let currentDay = 1;
 let currentNPC;
 let currentDialogueGroup;
 let currentDialogueType;
+
+// Variables for day transition.
+let fadeOpacity = 0;
+let isFadingOut = false;
+let isFadingIn = false;
+let dayTransitionOngoing = false;

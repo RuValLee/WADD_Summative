@@ -32,3 +32,33 @@ function buttonCreate(x, y, w, h, message) {
     textSize(24);
     text(message, x, y, w - 20, h - 20);
 }
+
+function fadeTransition() {
+    // Canvas fades out to black.
+    if(isFadingOut) {
+        fadeOpacity += 10;
+        if(fadeOpacity >= 255) {
+            fadeOpacity = 255;
+            isFadingOut = false;
+            startNewDay();
+            isFadingIn = true;
+        }
+    }
+
+    // Canvas fades in to the game.
+    if(isFadingIn) {
+        fadeOpacity -= 10;
+        if(fadeOpacity <= 0) {
+            fadeOpacity = 0;
+            isFadingIn = false;
+            dayTransitionOngoing = false;
+        }
+    }
+
+    // Draws the fading in/out effect when the function is called.
+    if(isFadingOut || isFadingIn) {
+        fill(0, fadeOpacity);
+        rectMode(CORNER);
+        rect(0, 0, width, height);
+    }
+}

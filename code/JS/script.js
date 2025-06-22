@@ -23,6 +23,8 @@ function draw() {
 
     interactionDetection(allInteractionAreas);
     showDialogueBox();
+
+    fadeTransition();
 }
 
 function keyPressed() {
@@ -60,9 +62,10 @@ function keyPressed() {
                     dialogueIndex = 0;
                 }
             }
-            else if(currentDialogueGroup === dialogues[`day${currentDay}`].dayEnd && dialogueIndex === currentDialogueGroup.length - 1) {
+            else if(currentDialogueGroup === dialogues[`day${currentDay}`].dayEnd && dialogueIndex === currentDialogueGroup.length - 1 && !dayTransitionOngoing) {
                 dialogueBoxVisible = false;
-                startNewDay();
+                dayTransitionOngoing = true;
+                isFadingOut = true;
             }
         }
     }
