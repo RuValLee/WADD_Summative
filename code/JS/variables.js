@@ -32,3 +32,6 @@ let fadeOpacity = 0;
 let isFadingOut = false;
 let isFadingIn = false;
 let dayTransitionOngoing = false;
+
+// Variables for tracking/storing user choices.
+let npcProgress;

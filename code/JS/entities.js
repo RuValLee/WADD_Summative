@@ -99,7 +99,7 @@ class Player extends GameObject {
         this.isMoving = false;
 
         // Allows player movement with animations by WASD / direction keys and stops the player from moving while inside a dialogue.
-        if(!dialogueBoxVisible) {
+        if(!dialogueBoxVisible && !dayTransitionOngoing) {
             if (keyIsDown(87) || keyIsDown(38)) {   // w, up arrow
                 nextY -= this.movementSpeed;
                 this.isMoving = true;
