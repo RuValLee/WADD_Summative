@@ -2,7 +2,7 @@
  * A function for creating the player character and NPCs.
  */
 function characterCreate() {
-    player = new Player(320, 600, 50, 50, 3, 5, walkAnimation);
+    player = new Player(width / 2, height / 4 * 3, 50, 50, 3, 5, walkAnimation);
     fisher = new NPC(125, 500, 100, 70);
     builder = new NPC(230, 320, 75, 50);
     farmer = new NPC(585, 440, 50, 50);

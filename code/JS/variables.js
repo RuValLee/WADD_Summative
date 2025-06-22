@@ -33,5 +33,15 @@ let isFadingOut = false;
 let isFadingIn = false;
 let dayTransitionOngoing = false;
 
-// Variables for tracking/storing user choices.
-let npcProgress;
+// Variable for the object literal tracking user choices.
+let npcProgress = {
+    fisher: [],
+    builder: [],
+    farmer: [],
+    woodcutter: []
+};
+let choiceSummary = {
+    help: 0,
+    sabotage: 0,
+    leave: 0
+};

@@ -66,6 +66,7 @@ function dialogueToShow(npcInteraction, dialogueGroup) {
 function selectChoices(optionChosen) {
     playerChoice = optionChosen;
     currentDialogueGroup = dialogues[`day${currentDay}`][currentNPC].options[optionChosen];
+    npcProgress[currentNPC].push(optionChosen);
     dialogueIndex = 0;
 }
 
@@ -86,9 +87,40 @@ function startNewDay() {
     dialogueStarted = false;
 
     // Resets player location.
-    player.x = 320;
-    player.y = 600;
+    player.x = width / 2;
+    player.y = height / 4 * 3;
 
     // Resets interactions.
     interactionAreaCreate();
+
+    // Triggers ending dialogue immediately when it is day 7.
+    if(currentDay === 7) {
+        endingDetermine();
+        dialogueBoxVisible = true;
+    }
+}
+
+function endingDetermine() {
+    // Counts the number of each choice made by the player.
+    for(let npc in npcProgress) {
+        for(let choice of npcProgress[npc]) {
+            choiceSummary[choice]++;
+        }
+    }
+
+    // Determines the conditions for each ending.
+    if(choiceSummary.help > 12) {
+        helpEnding();
+    }
+    else if(choiceSummary.sabotage > 12) {
+        sabotageEnding();
+    }
+    else if(choiceSummary.leave > 12) {
+        leaveEnding();
+    }
+    else if(choiceSummary.help === 8 && choiceSummary.sabotage === 8 && choiceSummary.leave === 8) {
+        balancedEnding();
+    } else {
+        loopEnding();
+    }
 }
