@@ -618,14 +618,64 @@ dialogues = {
             }                
         },
         dayEnd: [
-            "(It's like some sort of power controlling this place.)",
-            "(This is too creepy, I don't want to stay here.)",
-            "(But there's nowhere I can really go.)",
-            "(Why is this happening? And why me?)"
+            "(This place has been looping itself...)",
+            "(As if some sort of power is controlling all of this.)",
+            "(But what is it?)",
         ]
     },
 
     day7: {
-        
+        helpEnding: [
+            "...",
+            "Now I get it.",
+            "Thanks for helping everyone here, over and over.",
+            "You already knew the villagers are looping their days, but you still helped them.",
+            "I can feel your strong desire to help make things better.",
+            "I don't know why I'm trapped here, nor what's going on with this place.",
+            "But at least I know, you're trying to make changes in this village.",
+            "Or more precisely, you're controlling me to make these changes, right?",
+            "Thanks again, for everything you've done here. Still, I want to make the choices by myself from now on.",
+            "It was nice to meet you.",
+            "Farewell, stranger."
+        ],
+        sabotageEnding: [
+            "...",
+            "Now I get it.",
+            "It wasn't my choice from the beginning.",
+            "You made them skip work again and again.",
+            "Did you make those choices purely out of kindness so that they can rest?",
+            "Or did you do that for fun without considering the consequences of making them skipping their work?",
+            "The lake remains polluted, the building is yet to complete, the crops will die, the wood supply becomes short.",
+            "Rest is good. But over-resting is not.",
+            "You shouldn't have made them skip work for so many times.",
+            "Or to be more accurate, you shouldn't have made me persuade them to skip so many times.",
+            "I know it is a never-ending loop here. Still, I want to fix the problems and make things better.",
+            "Not as someone you control, but as myself.",
+            "Thanks for letting me realise what's going on in this place.",
+            "Farewell, stranger."
+        ],
+        leaveEnding: [
+            "...",
+            "Now I get it.",
+            "You've been watching them, but you never stepped in.",
+            "You saw them doing their work repeatedly, yet you walked away so many times.",
+            "Were you afraid of making the wrong choice?",
+            "Or did you simply do not care about them?",
+            "Well, the villagers still live the same life and move forward, even without you doing anything.",
+            "Maybe that's what this village needs exactly, to move on without external help.",
+            "If I were you, I wouldn't have left them so many times.",
+            "Or to be more accurate, I wouldn't have controlled myself to leave them, again and again.",
+            "But that's all in the past. From now on, I will move on with my own will.",
+            "You don't have to force yourself to watch or observe this place anymore. You're free to go.",
+            "And I'll be staying here. Still got a lot of work and helping to do in this village.",
+            "Thanks for letting me know that I can live my own life without anybody's help.",
+            "Farewell, stranger."
+        ],
+        balanceEnding: [
+
+        ],
+        loopEnding: [
+
+        ]
     }
 };

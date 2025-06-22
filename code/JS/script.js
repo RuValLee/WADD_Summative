@@ -25,6 +25,8 @@ function draw() {
     showDialogueBox();
 
     fadeTransition();
+
+    console.log(npcProgress);
 }
 
 function keyPressed() {
@@ -70,7 +72,7 @@ function keyPressed() {
         }
     }
 
-    if(dialogueBoxVisible && playerChoice === null
+    if(currentDay < 7 && dialogueBoxVisible && playerChoice === null
         && currentDialogueGroup === dialogues[`day${currentDay}`][currentNPC].intro && dialogueIndex === currentDialogueGroup.length - 1) {
         if(key === "1") {
             selectChoices("help");

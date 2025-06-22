@@ -42,7 +42,7 @@ function showDialogueBox() {
         textSize(24);
         text(currentDialogueGroup[dialogueIndex], 35, height - 115, width - 80, height - 30);
 
-        if(currentDialogueGroup === dialogues[`day${currentDay}`][currentNPC].intro && dialogueIndex === currentDialogueGroup.length - 1) {
+        if(currentDay < 7 && currentDialogueGroup === dialogues[`day${currentDay}`][currentNPC].intro && dialogueIndex === currentDialogueGroup.length - 1) {
             showOptions();
         }
     }
@@ -110,17 +110,17 @@ function endingDetermine() {
 
     // Determines the conditions for each ending.
     if(choiceSummary.help > 12) {
-        helpEnding();
+        currentDialogueGroup = dialogues[`day${currentDay}`].helpEnding;
     }
     else if(choiceSummary.sabotage > 12) {
-        sabotageEnding();
+        currentDialogueGroup = dialogues[`day${currentDay}`].sabotageEnding;
     }
     else if(choiceSummary.leave > 12) {
-        leaveEnding();
+        currentDialogueGroup = dialogues[`day${currentDay}`].leaveEnding;
     }
     else if(choiceSummary.help === 8 && choiceSummary.sabotage === 8 && choiceSummary.leave === 8) {
-        balancedEnding();
+        currentDialogueGroup = dialogues[`day${currentDay}`].balanceEnding;
     } else {
-        loopEnding();
+        currentDialogueGroup = dialogues[`day${currentDay}`].loopEnding;
     }
 }
