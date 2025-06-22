@@ -672,10 +672,35 @@ dialogues = {
             "Farewell, stranger."
         ],
         balanceEnding: [
-
+            "...",
+            "Now I get it.",
+            "You helped them when they needed, but you never made them go overboard.",
+            "Sometimes, you told them to take a rest. Other times, you simply listened to what they say...",
+            "Or should I say you made me do all of these decisions?",
+            "You achieved the balance between helping, resting and silent accompany.",
+            "The village feels a bit different now. Not perfect, but more real, more lively.",
+            "Is that what you're trying to tell me?",
+            "That not everything has to be perfectly done, and not doing anything can also be useful.",
+            "Thanks for giving me this precious lesson. Now, I want to walk my own path without guidance.",
+            "This village, this loop, it was very inspiring. That's why I'm willing to stay here. Still.",
+            "Thank you, stranger."
         ],
         loopEnding: [
-
+            "...",
+            "Now I get it.",
+            "It has been the same morning, over and over.",            
+            "You helped them, made them take rests, silently listened, did a bit of everything.",
+            "Well more precisely, you made me do a bit of everything, right?",
+            "But nothing really changed here.",
+            "This village keeps looping itself, and I keep doing the same thing every day.",
+            "Seems like doing a bit of everything isn't enough to make big changes.",
+            "But still, your presence meant something, even though there wasn't much change made.",
+            "Your guidance in the past few days made me realise one thing:",
+            "There's never right or wrong answers, and every single choice could make a difference.",
+            "Thanks for being with me in these days. From now on, I'd like to try walking my own path.",
+            "I know this might be a never-ending loop, but I will still move on and try to make a change.",
+            "And I will be still here.",
+            "Here. Still."
         ]
     }
 };
