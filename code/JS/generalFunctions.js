@@ -43,8 +43,15 @@ function fadeTransition() {
         if(fadeOpacity >= 255) {
             fadeOpacity = 255;
             isFadingOut = false;
-            startNewDay();
-            isFadingIn = true;
+
+            // Checks if the fade in transtition should keep going, not if it's the final day.
+            if(!isEnding) {
+                startNewDay();
+                isFadingIn = true;
+            } else {
+                onEndingFadeComplete();
+            }
+
         }
     }
 
@@ -55,6 +62,7 @@ function fadeTransition() {
             fadeOpacity = 0;
             isFadingIn = false;
             dayTransitionOngoing = false;
+            isEnding = false;
         }
     }
 
@@ -64,4 +72,21 @@ function fadeTransition() {
         rectMode(CORNER);
         rect(0, 0, width, height);
     }
+}
+
+/**
+ * A function for handling states for the ending transition from game.html to index.html.
+ */
+function endingTransition() {
+    isFadingOut = true;
+    isGameEnding = true;
+    dayTransitionOngoing = true;
+    fadeOpacity = 0;
+}
+
+/**
+ * A function for forcing players to the main menu after final dialogue.
+ */
+function onEndingFadeComplete() {
+    window.location.href = "../index.html";
 }

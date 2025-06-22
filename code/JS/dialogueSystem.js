@@ -97,9 +97,13 @@ function startNewDay() {
     if(currentDay === 7) {
         endingDetermine();
         dialogueBoxVisible = true;
+        isGameEnding = true;
     }
 }
 
+/**
+ * A function for determining which ending the player gets.
+ */
 function endingDetermine() {
     // Counts the number of each choice made by the player.
     for(let npc in npcProgress) {

@@ -68,6 +68,10 @@ function keyPressed() {
                 dialogueBoxVisible = false;
                 dayTransitionOngoing = true;
                 isFadingOut = true;
+            } else {
+                if(currentDay === 7) {
+                    endingTransition(); 
+                } 
             }
         }
     }

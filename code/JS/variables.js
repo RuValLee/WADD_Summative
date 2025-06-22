@@ -26,6 +26,7 @@ let currentDay = 1;
 let currentNPC;
 let currentDialogueGroup;
 let currentDialogueType;
+let isGameEnding = false;
 
 // Variables for day transition.
 let fadeOpacity = 0;
