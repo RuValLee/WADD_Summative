@@ -26,11 +26,9 @@ body {
 #title-page {
     display: grid;
     justify-content: center;
-    align-items: center;
 }
 
 #title-page header {
-    display: flex;
     height: 40vh;
 }
 
@@ -56,6 +54,8 @@ body {
     display: flex;
     justify-content: center;
     width: 13em;
+    border-radius: 0.75em;
+    box-shadow: 0 0.4vw 0.6vw rgb(0, 0, 0, 0.2);
     text-decoration: none;
     background-color: var(--button-color);
     color: var(--text-color);
@@ -66,6 +66,7 @@ body {
 
 #title-page a:hover {
     background-color: var(--button-hover);
+    box-shadow: 0 0.6vw 0.8vw rgb(0, 0, 0, 0.3);
 }
 
 #game-canvas {
