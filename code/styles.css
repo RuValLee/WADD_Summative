@@ -21,21 +21,25 @@
 body {
     background-color: var(--background-color);
     min-width: 640px;
+    min-height: 640px;
 }
 
 #title-page {
     display: grid;
-    justify-content: center;
+    grid-template-rows: 50% 50%;
+    height: 77vh;
 }
 
 #title-page header {
-    height: 40vh;
+    display: flex;
+    justify-content: center;
+    grid-row: 1/2;
 }
 
 #title-page h1 {
     color: var(--text-color);
     font-size: 5rem;
-    margin-top: 50%;
+    margin-top: 23vh;
 }
 
 #title-page ul {
@@ -43,7 +47,9 @@ body {
     flex-direction: column;
     align-items: center;
     height: 40vh;
+    gap: 1.5em;
     padding-left: 0%;
+    grid-row: 2/3;
 }
 
 #title-page li {
@@ -61,7 +67,6 @@ body {
     color: var(--text-color);
     font-size: 1.2em;
     line-height: 3.5em;
-    margin-bottom: 1.5em;
 }
 
 #title-page a:hover {
