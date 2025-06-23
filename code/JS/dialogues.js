@@ -696,7 +696,7 @@ dialogues = {
             "Seems like doing a bit of everything isn't enough to make big changes.",
             "But still, your presence meant something, even though there wasn't much change made.",
             "Your guidance in the past few days made me realise one thing:",
-            "There's never right or wrong answers, and every single choice could make a difference.",
+            "There's never a right or wrong answer, what matters is that I need to give it a try.",
             "Thanks for being with me in these days. From now on, I'd like to try walking my own path.",
             "I know this might be a never-ending loop, but I will still move on and try to make a change.",
             "And I will be still here.",

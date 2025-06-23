@@ -43,10 +43,10 @@ function keyPressed() {
             if(dialogueIndex < currentDialogueGroup.length - 1) {
                 dialogueIndex++;
             }
-            else if(currentDialogueGroup === dialogues[`day${currentDay}`][currentNPC].intro && dialogueIndex === currentDialogueGroup.length - 1) {
+            else if(currentDay < 7 && currentDialogueGroup === dialogues[`day${currentDay}`][currentNPC].intro && dialogueIndex === currentDialogueGroup.length - 1) {
                 dialogueIndex += 0;
             }
-            else if(currentDialogueGroup === dialogues[`day${currentDay}`][currentNPC].options[currentDialogueType]
+            else if(currentDay < 7 && currentDialogueGroup === dialogues[`day${currentDay}`][currentNPC].options[currentDialogueType]
                     && dialogueIndex === currentDialogueGroup.length - 1) {
                 // Resetting dialogue and dialogue box states.
                 interactIndicatorOn = true;
@@ -68,10 +68,9 @@ function keyPressed() {
                 dialogueBoxVisible = false;
                 dayTransitionOngoing = true;
                 isFadingOut = true;
-            } else {
-                if(currentDay === 7) {
-                    endingTransition(); 
-                } 
+            }
+            else if(currentDay === 7 && dialogueIndex === currentDialogueGroup.length - 1) {
+                endingTransition(); 
             }
         }
     }
