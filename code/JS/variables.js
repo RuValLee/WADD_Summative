@@ -34,7 +34,7 @@ let isFadingOut = false;
 let isFadingIn = false;
 let dayTransitionOngoing = false;
 
-// Variable for the object literal tracking user choices.
+// Variables for the object literals tracking user choices.
 let npcProgress = {
     fisher: [],
     builder: [],
