@@ -87,5 +87,5 @@ function endingTransition() {
  * A function for redirecting players to the main menu after final dialogue.
  */
 function onEndingFadeComplete() {
-    window.location.href = "../code/index.html";
+    window.location.href = "../code/ending.html";
 }
