@@ -1,10 +1,21 @@
 :root {
-    --background-color: #EEFFC5;
+    --background-color: #E3F7B6;
     --button-color: #B8DEFF;
     --button-hover: #C9E5FD;
     --text-color: #474240;
     --title-font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     --body-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+    --background-color: #3C4B35;
+    --button-color: #393C93;
+    --button-hover: #2B2E6E;
+    --text-color: #E0E0E0;
+    --title-font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    --body-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 }
 
 body {
@@ -21,12 +32,13 @@ body {
 }
 
 #title-page li {
-    display: inline-block;
+    display: block;
     list-style-type: none;
 }
 
 #title-page a {
-    display: block;
+    display: inline-block;
+    width: 8em;
     text-decoration: none;
     background-color: var(--button-color);
     color: var(--text-color);
@@ -41,7 +53,7 @@ body {
     background-color: var(--button-hover);
 }
 
-#gameCanvas {
+#game-canvas {
     border: 1.5px solid rgb(0, 0, 0);
     display: block;
     margin: auto;

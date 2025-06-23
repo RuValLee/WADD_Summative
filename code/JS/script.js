@@ -5,7 +5,7 @@ function preload() {
 
 function setup() {
     const canvas = createCanvas(640, 640);
-    canvas.id("gameCanvas");
+    canvas.id("game-canvas");
     getPlayerSprite(characterSprite, walkAnimation, 8, 0);
 
     characterCreate();
