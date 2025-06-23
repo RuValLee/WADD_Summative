@@ -25,8 +25,6 @@ function draw() {
     showDialogueBox();
 
     fadeTransition();
-
-    console.log(npcProgress);
 }
 
 function keyPressed() {

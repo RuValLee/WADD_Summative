@@ -84,17 +84,8 @@ function endingTransition() {
 }
 
 /**
- * A function for forcing players to the main menu after final dialogue.
+ * A function for redirecting players to the main menu after final dialogue.
  */
 function onEndingFadeComplete() {
-    // Redirecting players to the main menu on index.html.
     window.location.href = "../code/index.html";
-
-    // Resetting transition variable states, just in case the page refresh doesn't do the job.
-    setTimeout(() => {
-        fadeOpacity = 0;
-        isFadingIn = false;
-        dayTransitionOngoing = false;
-        isGameEnding = false;
-    }, 2000);
 }
