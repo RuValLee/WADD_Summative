@@ -141,9 +141,8 @@ body {
 }
 
 #about-page a {
-    display: flex;
     justify-self: center;
-    justify-content: center;
+    text-align: center;
     width: 10em;
     border-radius: 0.75em;
     box-shadow: 0 0.4vw 0.6vw rgb(0, 0, 0, 0.2);
