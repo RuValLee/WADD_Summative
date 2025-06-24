@@ -8,7 +8,7 @@ function setup() {
     canvas.id("game-canvas");
 
     // Loads the saved game data from localStorage.
-    loadGameState();
+    loadGameData();
 
     // Gets the initial player walk animation sprites and creates all characters.
     getPlayerSprite(characterSprite, walkAnimation, 8, 0);

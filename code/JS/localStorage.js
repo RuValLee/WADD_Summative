@@ -1,4 +1,4 @@
-function saveGameState() {
+function saveGameData() {
     const gameState = {
         currentDay,
         npcProgress,
@@ -7,7 +7,7 @@ function saveGameState() {
     localStorage.setItem("hereStillSavedData", JSON.stringify(gameState));
 }
 
-function loadGameState() {
+function loadGameData() {
     const savedData = localStorage.getItem("hereStillSavedData");
 
     if(savedData) {
@@ -31,6 +31,6 @@ function loadGameState() {
     }
 }
 
-function clearGameStates() {
+function clearGameData() {
     localStorage.removeItem("hereStillSavedData");
 }

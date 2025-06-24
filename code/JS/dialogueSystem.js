@@ -68,6 +68,9 @@ function selectChoices(optionChosen) {
     currentDialogueGroup = dialogues[`day${currentDay}`][currentNPC].options[optionChosen];
     npcProgress[currentNPC].push(optionChosen);
     dialogueIndex = 0;
+
+    // Saves the npcProgress data into localStorage.
+    saveGameData();
 }
 
 /**
@@ -80,6 +83,9 @@ function startNewDay() {
     } else {
         currentDay = 7;
     }
+
+    // Saves the currentDay data into localStorage.
+    saveGameData();
 
     // Resets variable states.
     dialogueIndex = 0;
@@ -111,6 +117,9 @@ function endingDetermine() {
             choiceSummary[choice]++;
         }
     }
+
+    // Saves the choiceSummary data into localStorage.
+    saveGameData();
 
     // Determines the conditions for each ending.
     if(choiceSummary.help > 12) {
