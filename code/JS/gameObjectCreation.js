@@ -26,21 +26,36 @@ function drawCharacters() {
 
 /**
  * A function for creating NPCs' interactable location/areas.
+ * This code is written by generative AI.
+ * Author: ChatGPT
+ * Date: 23/06/2025
  */
 function interactionAreaCreate() {
-    // Creates game objects for the NPC interaction areas.
-    // Names for interaction tracking.
-    rectMode(CENTER);
-    fisherInteraction = new GameObject(150, 485, 40, 40);
-    fisherInteraction.name = "fisher";
-    builderInteraction = new GameObject(230, 315, 40, 40);
-    builderInteraction.name = "builder";
-    woodcutterInteraction = new GameObject(600, 140, 40, 40);
-    woodcutterInteraction.name = "woodcutter";
-    farmerInteraction = new GameObject(580, 430, 40, 40);
-    farmerInteraction.name = "farmer";
+    rectMode(CENTER);   // I added this line to draw the interaction areas in center mode.
+    allInteractionAreas = [];
 
-    allInteractionAreas.push(fisherInteraction, builderInteraction, farmerInteraction, woodcutterInteraction);
+    // Defines the interaction area names and locations.
+    // Code written by ChatGPT, but locations were set by myself.
+    const npcPositions = {
+        fisher: [150, 485],
+        builder: [230, 315],
+        farmer: [580, 430],
+        woodcutter: [600, 140]
+    };
+
+    // Creates the interaction areas if the NPC has not been interacted with.
+    for(const [npc, [x, y]] of Object.entries(npcPositions)) {
+        const hasInteracted = npcProgress[npc] && npcProgress[npc].length >= currentDay;
+
+        // Creates the interaction areas and the corresponding names.
+        const interaction = new GameObject(x, y, 40, 40);
+        interaction.name = npc;
+
+        // Pushes the interaction areas to the allInteractionAreas array if the NPC hasn't been interacted.
+        if(!hasInteracted) {
+            allInteractionAreas.push(interaction);
+        }
+    }
     
     // For testing and checking interaction areas while coding, not displayed in the actual game.
     // for(let interactionArea of allInteractionAreas) {

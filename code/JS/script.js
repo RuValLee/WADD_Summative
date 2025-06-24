@@ -6,16 +6,17 @@ function preload() {
 function setup() {
     const canvas = createCanvas(640, 640);
     canvas.id("game-canvas");
-    getPlayerSprite(characterSprite, walkAnimation, 8, 0);
 
+    // Loads the saved game data from localStorage.
+    loadGameState();
+
+    // Gets the initial player walk animation sprites and creates all characters.
+    getPlayerSprite(characterSprite, walkAnimation, 8, 0);
     characterCreate();
 
     // Creates the obstacles and interaction areas.
     obstacleCreate();
     interactionAreaCreate();
-
-    // Loads the saved game data from localStorage.
-    loadGameState();
 }
 
 function draw() {
