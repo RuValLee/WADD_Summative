@@ -1,8 +1,8 @@
 function saveGameState() {
     const gameState = {
         currentDay,
-        totalOptionCount,
-        dailyChoices
+        npcProgress,
+        choiceSummary
     };
     localStorage.setItem("hereStillSavedData", JSON.stringify(gameState));
 }
@@ -13,10 +13,21 @@ function loadGameState() {
     if(savedData) {
         const gameState = JSON.parse(savedData);
         currentDay = gameState.currentDay;
-        totalOptionCount = gameState.totalOptionCount;
-        dailyChoices = gameState.dailyChoices;
+        npcProgress = gameState.npcProgress;
+        choiceSummary = gameState.choiceSummary;
     } else {
         currentDay = 1;
+        npcProgress = {
+            fisher: [],
+            builder: [],
+            farmer: [],
+            woodcutter: []
+        };
+        choiceSummary = {
+            help: 0,
+            sabotage: 0,
+            leave: 0
+        };
     }
 }
 
