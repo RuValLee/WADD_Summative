@@ -15,6 +15,8 @@ function loadGameState() {
         currentDay = gameState.currentDay;
         totalOptionCount = gameState.totalOptionCount;
         dailyChoices = gameState.dailyChoices;
+    } else {
+        currentDay = 1;
     }
 }
 

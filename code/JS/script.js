@@ -13,6 +13,9 @@ function setup() {
     // Creates the obstacles and interaction areas.
     obstacleCreate();
     interactionAreaCreate();
+
+    // Loads the saved game data from localStorage.
+    loadGameState();
 }
 
 function draw() {

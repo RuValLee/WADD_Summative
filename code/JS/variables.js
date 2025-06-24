@@ -22,7 +22,7 @@ let dialogueStarted = false;
 
 // Variables for tracking current states/objects.
 let playerChoice = null;
-let currentDay = 1;
+let currentDay;
 let currentNPC;
 let currentDialogueGroup;
 let currentDialogueType;
@@ -34,7 +34,7 @@ let isFadingOut = false;
 let isFadingIn = false;
 let dayTransitionOngoing = false;
 
-// Variables for the object literals tracking user choices.
+// Variables for the object literals storing/tracking user choices.
 let npcProgress = {
     fisher: [],
     builder: [],
