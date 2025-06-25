@@ -1,4 +1,4 @@
-if (!localStorage.getItem("hereStillSavedData")) {
+if (localStorage.getItem("hereStillSavedData") === null) {
     document.getElementById("ending-page").innerHTML = '<p id="no-data-text">No saved game data found.</p>' + '<nav><a href"index.html">Close page and return to main menu</a><nav>';
 } else {
     createNewHtmlElement("day1-summary", "p", "Hi");
