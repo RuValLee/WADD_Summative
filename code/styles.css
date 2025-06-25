@@ -29,17 +29,19 @@ body {
     color:var(--text-color);
 }
 
-#title-page, #about-page, #game-page {
+#title-page, #about-page, #game-page, #ending-page {
     display: grid;
 }
 
-#title-page header, #about-page header, #game-page header {
+#title-page header, #about-page header, #game-page header, #ending-page header {
     display: flex;
     justify-content: center;
     grid-row: 1/2;
 }
 
-#title-page a, #about-page a, #game-page a {
+#title-page a, #about-page a, #game-page a, #ending-page a {
+    display: flex;
+    justify-content: center;
     text-decoration: none;
     background-color: var(--button-color);
     color: var(--text-color);
@@ -47,16 +49,16 @@ body {
     line-height: 3.5em;
 }
 
-#title-page a:hover, #about-page a:hover, #game-page a:hover {
+#title-page a:hover, #about-page a:hover, #game-page a:hover, #ending-page a:hover {
     background-color: var(--button-hover);
 }
 
-#title-page a, #about-page a {
+#title-page a, #about-page a, #ending-page a {
     border-radius: 0.75em;
     box-shadow: 0 0.4vw 0.6vw rgb(0, 0, 0, 0.2);
 }
 
-#title-page a:hover, #about-page a:hover {
+#title-page a:hover, #about-page a:hover, #ending-page a:hover {
     box-shadow: 0 0.6vw 0.8vw rgb(0, 0, 0, 0.3);
 }
 
@@ -89,8 +91,6 @@ body {
 }
 
 #title-page a {
-    display: flex;
-    justify-content: center;
     width: 13em;
 }
 
@@ -156,8 +156,6 @@ body {
 }
 
 #about-page a {
-    display: flex;
-    justify-content: center;
     width: 10em;
 }
 
@@ -183,10 +181,8 @@ body {
 }
 
 #game-page a {
-    display: flex;
     width: 100%;
     margin: 0.1%;
-    justify-content: center;
 }
 
 #game-canvas {
@@ -194,4 +190,14 @@ body {
     border: 1.5px solid #000000;
     display: block;
     margin: auto;
+}
+
+/** ending.html **/
+#ending-page nav {
+    display: flex;
+    justify-content: center;
+}
+
+#ending-page a {
+    width: 20em;
 }
