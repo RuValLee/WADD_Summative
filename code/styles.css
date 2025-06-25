@@ -97,7 +97,6 @@ body {
 /** about.html **/
 #about-page {
     grid-template-rows: 20% 80%;
-    height: 90vh;
 }
 
 #about-page h1 {
@@ -107,7 +106,7 @@ body {
 #about-page main {
     display: grid;
     grid-row:2/3;
-    grid-template-rows: 55% 35% 10%;
+    grid-template-rows: 55% 35% 12%;
 }
 
 #about-page h2 {
@@ -162,7 +161,6 @@ body {
 /** game.html **/
 #game-page {
     grid-template-rows: 10% 3% 85%;
-    height: 95vh;
 }
 
 #game-page main {
@@ -193,6 +191,54 @@ body {
 }
 
 /** ending.html **/
+#ending-page {
+    grid-template-rows: 7% 93%;
+}
+
+#ending-page main {
+    grid-row: 2/3;
+    display: grid;
+    grid-template-rows: 4% 70% 15% 10% 6%;
+}
+
+#ending-page h1 {
+    font-size: 2.5em;
+}
+
+#ending-page p {
+    font-size: 1em;
+}
+
+#top-text {
+    text-align: center;
+    grid-row: 1/2;
+}
+
+#daily-summary {
+    grid-row: 2/3;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+#daily-summary h2 {
+    grid-column: 1/3;
+    margin-bottom: 0%;
+}
+
+#overall-choice-count {
+    grid-row: 3/4;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+#final-message {
+    padding-left: 2%;
+    padding-right: 2%;
+    color: var(--accent-text-color);
+}
+
 #ending-page nav {
     display: flex;
     justify-content: center;

@@ -60,7 +60,22 @@ function displayChoiceCount() {
     // Loops through all choice types ("help", "sabotage", "leave") in the parsed choiceSummary object.
     for (let choiceType in choiceSummaryData) {
         const choiceId = choiceType + "-count";
-        createNewHtmlElement(choiceId, "p", `${choiceType}: ${choiceSummaryData[choiceType]}`);
+
+        let sentence = "";
+
+        // Displays the choice made by the player each day.
+        switch (choiceType) {
+            case "help":
+                sentence = `Helped the villagers with work: ${choiceSummaryData[choiceType]} times`;
+                break;
+            case "sabotage":
+                sentence = `Persuaded the villagers to skip work: ${choiceSummaryData[choiceType]} times`;
+                break;
+            case "leave":
+                sentence = `Left the villagers alone for personal time: ${choiceSummaryData[choiceType]} times`;
+                break;
+            }
+        createNewHtmlElement(choiceId, "p", sentence);
     }
 }
 
