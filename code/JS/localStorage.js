@@ -37,10 +37,3 @@ function loadGameData() {
         };
     }
 }
-
-/**
- * A function for clearing game data stored inside localStorage.
- */
-function clearGameData() {
-    localStorage.removeItem("hereStillSavedData");
-}

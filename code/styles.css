@@ -4,6 +4,7 @@
     --button-color: #B8DEFF;
     --button-hover: #C9E5FD;
     --text-color: #474240;
+    --disabled-button-color: #E0E0E0;
     --accent-text-color: #32399A;
     --title-font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     --body-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,6 +16,7 @@
     --button-color: #393C93;
     --button-hover: #2B2E6E;
     --text-color: #E0E0E0;
+    --disabled-button-color: #474240;
     --accent-text-color: #F5FF70;
     --title-font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     --body-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -47,6 +49,7 @@ body {
     color: var(--text-color);
     font-size: 1.2em;
     line-height: 3.5em;
+    height: 3.5em;
 }
 
 #title-page a:hover, #about-page a:hover, #game-page a:hover, #ending-page a:hover {
@@ -92,6 +95,15 @@ body {
 
 #title-page a {
     width: 13em;
+}
+
+#continue-game-button.disabled-button {
+    background-color: var(--disabled-button-color);
+}
+
+#continue-game-button.disabled-button:hover {
+    background-color: var(--disabled-button-color);
+    box-shadow: 0 0.4vw 0.6vw rgb(0, 0, 0, 0.2);
 }
 
 /** about.html **/
@@ -252,7 +264,9 @@ body {
     width: 20em;
 }
 
-#no-data-text {
-    text-align: center;
-    font-size: 2em;
+#ending-page #no-data-text {
+    display: flex;
+    font-size: 1.2em;
+    padding-left: 2%;
+    padding-right: 2%;
 }
