@@ -181,6 +181,7 @@ body {
 #game-page a {
     width: 100%;
     margin: 0.1%;
+    min-height: 60px;
 }
 
 #game-canvas {
@@ -220,6 +221,7 @@ body {
     grid-template-columns: 50% 50%;
     padding-left: 2%;
     padding-right: 2%;
+    min-height: 600px;
 }
 
 #daily-summary h2 {
@@ -231,6 +233,7 @@ body {
     grid-row: 3/4;
     padding-left: 2%;
     padding-right: 2%;
+    min-height: 150px;
 }
 
 #final-message {

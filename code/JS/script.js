@@ -4,18 +4,15 @@ function preload() {
 }
 
 function setup() {
-    // Creates the game canvas.
     const canvas = createCanvas(640, 640);
     canvas.id("game-canvas");
 
     // Loads the saved game data from localStorage if there's any.
     loadGameData();
 
-    // Gets the initial player character walk animation sprites and creates all characters.
+    // Gets the initial player character walk animation sprites and creates all game objects.
     getPlayerSprite(characterSprite, walkAnimation, 8, 0);
     characterCreate();
-
-    // Creates the obstacles and interaction areas.
     obstacleCreate();
     interactionAreaCreate();
 }
@@ -37,7 +34,6 @@ function draw() {
 
 function keyPressed() {
     // Disables the interact button and allows dialogue box to be displayed when F key is pressed.
-    // Interact button is available only when the player is near a NPC.
     if((key === "f" || key === "F")) {
         if(interactIndicatorOn) {
             interactIndicatorOn = false;
@@ -49,7 +45,6 @@ function keyPressed() {
     // Progresses the dialogue to the following lines / closes the dialogue when SPACE key is pressed.
     if(key === " ") {
         if(dialogueBoxVisible) {
-            // Goes to the next line when it is not the final line of a dialogue.
             if(dialogueIndex < currentDialogueGroup.length - 1) {
                 dialogueIndex++;
             }
@@ -79,7 +74,6 @@ function keyPressed() {
                 }
             }
 
-            // Closes the dialogue and the box after the final dayEnd dialogue line has been displayed.
             // Triggers the day transition animation automatically after the dialogue box closes.
             else if(currentDialogueGroup === dialogues[`day${currentDay}`].dayEnd && dialogueIndex === currentDialogueGroup.length - 1 && !dayTransitionOngoing) {
                 dialogueBoxVisible = false;

@@ -3,9 +3,9 @@
  */
 function saveGameData() {
     const gameState = {
-        currentDay,    // For players to return to the day they left off.
-        npcProgress,    // For displaying choices made by players in the ending summary.
-        choiceSummary    // For displaying the total number of each choice made in the ending summary.
+        currentDay,
+        npcProgress,
+        choiceSummary
     };
     localStorage.setItem("hereStillSavedData", JSON.stringify(gameState));
 }

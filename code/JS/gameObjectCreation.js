@@ -13,13 +13,11 @@ function characterCreate() {
  * A function for drawing NPCs and player character on the game canvas.
  */
 function drawCharacters() {
-    // NPCs
     fisher.display(characterSprite, 0, spritePixelSize * 2, spritePixelSize * 2, spritePixelSize * 1.5);
     builder.display(characterSprite, 0, spritePixelSize * 3.5, spritePixelSize * 1.5, spritePixelSize);
     farmer.display(characterSprite, 0, spritePixelSize * 4.5, spritePixelSize, spritePixelSize);
     woodcutter.display(characterSprite, 0, spritePixelSize * 5.5, spritePixelSize, spritePixelSize);
 
-    // Player character
     player.display();
     player.update(allObstacles);
 }
@@ -35,7 +33,6 @@ function interactionAreaCreate() {
     allInteractionAreas = [];
 
     // Defines the interaction area names and locations.
-    // Code written by ChatGPT, but locations were set by myself.
     const npcPositions = {
         fisher: [150, 485],
         builder: [230, 315],
@@ -56,11 +53,6 @@ function interactionAreaCreate() {
             allInteractionAreas.push(interaction);
         }
     }
-    
-    // For testing and checking interaction areas while coding, not displayed in the actual game.
-    // for(let interactionArea of allInteractionAreas) {
-    //     interactionArea.display();
-    // }
 }
 
 /**
@@ -85,11 +77,6 @@ function obstacleCreate() {
     forestCollision();
     bigDecorationCollision();
     smallDecorationCollision();
-
-    // For testing and checking collision box locations while coding, not displayed in the actual game.
-    // for(let obstacle of allObstacles) {
-    //     obstacle.display();
-    // }
 }
 
 /**
