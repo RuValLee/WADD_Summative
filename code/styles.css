@@ -201,3 +201,8 @@ body {
 #ending-page a {
     width: 20em;
 }
+
+#no-data-text {
+    text-align: center;
+    font-size: 2em;
+}
