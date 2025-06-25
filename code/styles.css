@@ -167,6 +167,7 @@ body {
     display: grid;
     grid-row: 3/4;
     grid-template-rows: 10% 3% 85%;
+    min-height: 700px;
 }
 
 #game-page nav {
