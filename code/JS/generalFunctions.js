@@ -1,5 +1,5 @@
 /**
- * Gets the sprites for player character animations and pushes them into an array.
+ * A function for getting the sprites for player character animations and pushing them into an array.
  * @param {p5.Image} spritePng The character sprite sheet image.
  * @param {p5.Image[]} animationArray An array that stores the sprite images for the movement animation.
  * @param {number} numberOfFrames The number of sprites to get the complete walking animation.
@@ -16,7 +16,7 @@ function getPlayerSprite(spritePng, animationArray, numberOfSprites, frameHeight
 }
 
 /**
- * Creates UI buttons.
+ * A function for creating UI buttons.
  * @param {number} x The starting x-coordinate of the button.
  * @param {number} y The starting y-coordinate of the button.
  * @param {number} w The width of the button.
@@ -74,7 +74,7 @@ function fadeTransition() {
 }
 
 /**
- * A function for handling states for the ending transition from game.html to index.html.
+ * A function for handling states for the ending transition from game.html to ending.html.
  */
 function endingTransition() {
     isFadingOut = true;
@@ -84,7 +84,7 @@ function endingTransition() {
 }
 
 /**
- * A function for redirecting players to the main menu after final dialogue.
+ * A function for redirecting players to the ending.html after the final dialogue line.
  */
 function onEndingFadeComplete() {
     window.location.href = "../code/ending.html";

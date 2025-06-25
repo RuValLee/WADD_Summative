@@ -1,6 +1,5 @@
 /**
  * A function for detecting if interactions are available, displays the interact button when it is available.
- * For loop to check which dialogue to show when the player gets close to an NPC.
  * @param {GameObject[]} objects An array holding all NPC interaction locations.
  */
 function interactionDetection(objects) {
@@ -30,7 +29,6 @@ function interactionDetection(objects) {
 
 /**
  * A function for displaying the dialogue and the dialogue box.
- * For loop to display the choice buttons during dialogues.
  */
 function showDialogueBox() {
     if(dialogueBoxVisible) {
@@ -42,6 +40,7 @@ function showDialogueBox() {
         textSize(24);
         text(currentDialogueGroup[dialogueIndex], 35, height - 115, width - 80, height - 30);
 
+        // Displays the choice buttons during dialogues.
         if(currentDay < 7 && currentDialogueGroup === dialogues[`day${currentDay}`][currentNPC].intro && dialogueIndex === currentDialogueGroup.length - 1) {
             showOptions();
         }

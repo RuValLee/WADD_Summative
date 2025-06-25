@@ -1,16 +1,23 @@
+/**
+ * A function for saving game data into localStorage.
+ */
 function saveGameData() {
     const gameState = {
-        currentDay,
-        npcProgress,
-        choiceSummary
+        currentDay,    // For players to return to the day they left off.
+        npcProgress,    // For displaying choices made by players in the ending summary.
+        choiceSummary    // For displaying the total number of each choice made in the ending summary.
     };
     localStorage.setItem("hereStillSavedData", JSON.stringify(gameState));
 }
 
+/**
+ * A function for loading game data from localStorage.
+ */
 function loadGameData() {
     const savedData = localStorage.getItem("hereStillSavedData");
 
-    if(savedData) {
+    // Loads and applies the saved data if there is any in localStorage.
+    if(savedData !== null) {
         const gameState = JSON.parse(savedData);
         currentDay = gameState.currentDay;
         npcProgress = gameState.npcProgress;
@@ -31,6 +38,9 @@ function loadGameData() {
     }
 }
 
+/**
+ * A function for clearing game data stored inside localStorage.
+ */
 function clearGameData() {
     localStorage.removeItem("hereStillSavedData");
 }

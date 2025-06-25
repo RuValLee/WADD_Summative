@@ -64,7 +64,7 @@ function interactionAreaCreate() {
 }
 
 /**
- * A function to show option buttons during the dialogue.
+ * A function for showing option buttons during the dialogue.
  */
 function showOptions() {
     buttonCreate(470, height / 2 + 30, 300, 50, "1 - Help");    // Help option
@@ -73,7 +73,7 @@ function showOptions() {
 }
 
 /**
- * Creates collision boxes for borders / obstacles.
+ * A function for creating collision boxes for borders / obstacles.
  * Bottom of a collision box should ideally be 1-1.5 gridSize smaller for more realistic overlappig effect.
  */
 function obstacleCreate() {

@@ -31,6 +31,9 @@ class GameObject {
 class NPC extends GameObject {
     /**
      * A method for drawing the NPC sprites on the game canvas.
+     * The let idleMotion line in this method is written by generative AI.
+     * Author: ChatGPT
+     * Date: 18/06/2025
      * @param {p5.Image} spritePng The character sprite sheet image.
      * @param {number} spriteX The x-coordinate of the NPC sprite on the sheet.
      * @param {number} spriteY The y-coordinate of the NPC sprite on the sheet.
@@ -38,7 +41,7 @@ class NPC extends GameObject {
      * @param {number} spriteH The height of the NPC sprite on the sheet.
      */
     display(spritePng, spriteX, spriteY, spriteW, spriteH) {
-        let idleMotion = sin(frameCount * 0.1) * 0.5;   // Creating the floating animation as idle animation of NPCs.
+        let idleMotion = sin(frameCount * 0.1) * 0.5;   // Creating a floating animation as idle animation of NPCs, written by ChatGPT.
         let img = spritePng.get(spriteX, spriteY, spriteW, spriteH);    // Getting the sprite image from the sprite sheet
 
         // Draws the NPCs in center mode, then returns to corner mode for drawing other game objects.
@@ -141,7 +144,7 @@ class Player extends GameObject {
     }
 
     /**
-     * Checking collision by calculating the centre points of player and interactable areas.
+     * A method for checking collision by calculating the centre points of player and interactable areas.
      * @param {Object} other The other object to check for collision.
      * @returns {boolean} True if the player collides with other objects, false otherwise.
      */
