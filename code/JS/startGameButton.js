@@ -12,6 +12,7 @@ function newEventListener(elementId, eventType, functionName) {
  */
 function newButtonClicked() {
     localStorage.removeItem("hereStillSavedData");
+    localStorage.removeItem("endingState");
 }
 
 function continueButtonClicked(e) {
@@ -26,9 +27,10 @@ function continueButtonClicked(e) {
 
 function disableButton() {
     const savedData = localStorage.getItem("hereStillSavedData");
+    const endingData = localStorage.getItem("endingState");
     const continueButton = document.getElementById("continue-game-button");
 
-    if(savedData === null) {
+    if(savedData === null || endingData === "viewed") {
         continueButton.classList.add("disabled-button");
         continueButton.removeAttribute("href");        
     }

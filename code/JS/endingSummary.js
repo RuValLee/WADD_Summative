@@ -1,17 +1,29 @@
 const savedData = localStorage.getItem("hereStillSavedData");
 let parsedData;
 
+// Sets an item to force players to start a new game after viewing the ending summary.
+localStorage.setItem("endingState", "viewed");
+
+// Handles the content to display in ending.html.
 if (savedData === null) {
+    // Supposed not available before ending, but just in case handled the case where there's no saved data.
     document.getElementById("ending-page").innerHTML =
     '<p id="no-data-text">No saved game data found.</p>' + 
     '<nav><a href="index.html">Close page and return to main menu</a></nav>';
 } else {
+    // Displays all players choices, the total choice number count and the final message.
     parsedData = JSON.parse(savedData);
     displayNpcData();
     displayChoiceCount();
     displayFinalMessage();
 }
 
+/**
+ * A function for creating new HTML elements in the html file.
+ * @param {string} elementId The string for the parent element ID to add new elements to.
+ * @param {string} elementType The string for the type of HTML element to create.
+ * @param {string} content The string for the text content to display.
+ */
 function createNewHtmlElement(elementId, elementType, content) {
     const getElement = document.getElementById(elementId);
     const newElement = document.createElement(elementType);
@@ -20,6 +32,9 @@ function createNewHtmlElement(elementId, elementType, content) {
     getElement.appendChild(newElement);
 }
 
+/**
+ * A function for displaying choice data per day for each NPC.
+ */
 function displayNpcData() {
     const npcProgressData = parsedData.npcProgress;
 
@@ -54,6 +69,9 @@ function displayNpcData() {
     }
 }
 
+/**
+ * A function for displaying the final choice count throughout all days.
+ */
 function displayChoiceCount() {
     const choiceSummaryData = parsedData.choiceSummary;
 
@@ -74,16 +92,21 @@ function displayChoiceCount() {
             case "leave":
                 sentence = `Left the villagers alone for personal time: ${choiceSummaryData[choiceType]} times`;
                 break;
-            }
+        }
+
         createNewHtmlElement(choiceId, "p", sentence);
     }
 }
 
+/**
+ * A function for displaying the final message at the bottom according to the ending type.
+ */
 function displayFinalMessage() {
     const choiceSummaryData = parsedData.choiceSummary;;
 
     let finalText = "";
 
+    // Checks the conditions for each ending type.
     if(choiceSummaryData.help > 12) {
         finalText = "You have helped the villagers many times throughout your journey. They appreciated your help. Thanks to you, this place started to grow. It has always remained still here, but change began with you and the little hero who's staying here, still.";
     }

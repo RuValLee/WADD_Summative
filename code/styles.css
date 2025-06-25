@@ -265,8 +265,15 @@ body {
 }
 
 #ending-page #no-data-text {
-    display: flex;
     font-size: 1.2em;
     padding-left: 2%;
     padding-right: 2%;
+}
+
+@media (max-width: 1024px) {
+    #ending-page #no-data-text {
+        font-size: 1.2em;
+        text-align: center;
+        margin-top: 5.5em;
+    }
 }
