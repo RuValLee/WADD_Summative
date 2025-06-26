@@ -87,5 +87,5 @@ function endingTransition() {
  * A function for redirecting players to the ending.html after the final dialogue line.
  */
 function onEndingFadeComplete() {
-    window.location.href = "../docs/ending.html";
+    window.location.href = "../ending.html";
 }
