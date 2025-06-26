@@ -1,6 +1,6 @@
 function preload() {
-    backgroundMap = loadImage("../assets/backgroundMap.png");
-    characterSprite = loadImage("../assets/Characters.png");
+    backgroundMap = loadImage("assets/backgroundMap.png");
+    characterSprite = loadImage("assets/Characters.png");
 }
 
 function setup() {
