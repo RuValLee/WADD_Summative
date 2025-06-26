@@ -6,8 +6,7 @@
     --text-color: #474240;
     --disabled-button-color: #E0E0E0;
     --accent-text-color: #32399A;
-    --title-font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    --body-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --text-font-family: Times, 'Times New Roman', serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,8 +17,7 @@
     --text-color: #E0E0E0;
     --disabled-button-color: #474240;
     --accent-text-color: #F5FF70;
-    --title-font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    --body-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --text-font-family: Times, 'Times New Roman', serif;
     }
 }
 
@@ -29,6 +27,7 @@ body {
     min-width: 640px;
     min-height: 640px;
     color:var(--text-color);
+    font-family: var(--text-font-family);
 }
 
 #title-page, #about-page, #game-page, #ending-page {
